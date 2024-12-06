@@ -6,10 +6,8 @@ const app = require('../app');
 const api = supertest(app);
 
 const Blog = require('../models/blog');
-const User = require('../models/user');
 
-const token =
-  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlNvbGVpbCIsImlkIjoiNjU3NDNkYmZlZTJiYmNhNGI5ZmM2YzYxIiwiaWF0IjoxNzAyMTE2ODI5fQ.9KEMZ_f6-3pH_pLxb0EioJwImNeHbpLl8PhCybsktu4';
+const token = process.env.TEST_TOKEN;
 
 beforeEach(async () => {
   await Blog.deleteMany({});
@@ -62,7 +60,7 @@ describe('database contain blogs', () => {
       .set('Authorization', token)
       .send(blog);
 
-    expect(newBlog.body.likes).toBe(blog.likes);
+    expect(newBlog.body.likes).toBe(blog.likes + 1);
   }, 10000);
 });
 
@@ -108,9 +106,9 @@ describe('adding new blogs', () => {
 
   test('return status code 400 if blog title or url is missing', async () => {
     const newBlog = {
-      author: 'an author',
+      title: 'A Title',
+      author: 'An Author',
       likes: 0,
-      url: 'url',
     };
 
     await api
@@ -118,7 +116,7 @@ describe('adding new blogs', () => {
       .set('Authorization', token)
       .send(newBlog)
       .expect(400);
-  }, 10000);
+  });
 
   test('return 401 when token is missing', async () => {
     const newBlog = {

@@ -12,7 +12,7 @@ const mongoose = require('mongoose');
 
 mongoose.set('strictQuery', false);
 
-info(`connecting to ${config.MONGODB_URI}`);
+info(`connecting to database`);
 
 mongoose
   .connect(config.MONGODB_URI)

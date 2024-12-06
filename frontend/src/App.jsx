@@ -69,7 +69,7 @@ const App = () => {
       setBlogs(blogs.concat(blog));
       setBlogs(await blogService.getAll());
       showNotification(
-        `A new blog ${newBlog.title} by ${newBlog.author} has been added.`,
+        `A new blog ${newBlog.title} by ${newBlog.author} has been added.`
       );
     } catch (exception) {
       console.log('Error');
@@ -88,7 +88,7 @@ const App = () => {
   const deleteBlog = async (blog) => {
     try {
       const question = window.confirm(
-        `Remove ${blog.title} by ${blog.author}?`,
+        `Remove ${blog.title} by ${blog.author}?`
       );
       if (question) {
         await blogService.deleteBlog(blog);
@@ -115,7 +115,7 @@ const App = () => {
         <div>
           username:
           <input
-            data-cy="username"
+            placeholder="username"
             type="text"
             value={username}
             onChange={({ target }) => setUsername(target.value)}
@@ -124,15 +124,13 @@ const App = () => {
         <div>
           password:
           <input
-            data-cy="password"
+            placeholder="password"
             type="password"
             value={password}
             onChange={({ target }) => setPassword(target.value)}
           />
         </div>
-        <button type="submit" data-cy="login">
-          login
-        </button>
+        <button type="submit">login</button>
       </form>
     );
   };

@@ -26,7 +26,6 @@ const BlogForm = ({ addBlog }) => {
       <div>
         title:
         <input
-          data-cy="titleInp"
           type="text"
           value={title}
           onChange={({ target }) => setTitle(target.value)}
@@ -36,7 +35,6 @@ const BlogForm = ({ addBlog }) => {
       <div>
         author:
         <input
-          data-cy="authorInp"
           type="text"
           value={author}
           onChange={({ target }) => setAuthor(target.value)}
@@ -46,16 +44,13 @@ const BlogForm = ({ addBlog }) => {
       <div>
         url:
         <input
-          data-cy="urlInp"
           type="text"
           value={url}
           onChange={({ target }) => setUrl(target.value)}
           placeholder="blog url"
         />
       </div>
-      <button type="submit" data-cy="createBlog">
-        create
-      </button>
+      <button type="submit">create</button>
     </form>
   );
 };

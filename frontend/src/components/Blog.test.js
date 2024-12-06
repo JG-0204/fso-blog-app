@@ -35,6 +35,7 @@ test('when view button is clicked show blog additional details', async () => {
 
   const user = userEvent.setup();
   const button = screen.getByText('view');
+
   await user.click(button);
 
   const blogDetails = container.querySelector('.blogDetails');

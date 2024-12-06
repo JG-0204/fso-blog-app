@@ -41,7 +41,7 @@ const Blog = ({ blog, likeUpdater, deleteBlog, currUser }) => {
 
   return (
     <>
-      <div style={blogStyle} data-cy="blog">
+      <div style={blogStyle} data-cy="blog" className="blog">
         {blog.title} {blog.author}
         <button
           onClick={() => setShowDetails(showDetails ? false : true)}
@@ -50,7 +50,11 @@ const Blog = ({ blog, likeUpdater, deleteBlog, currUser }) => {
           {showDetails ? 'hide' : 'view'}
         </button>
         {showDetails && (
-          <div style={blogDetailsStyle} data-cy="blogDetails">
+          <div
+            style={blogDetailsStyle}
+            data-cy="blogDetails"
+            className="blogDetails"
+          >
             {blog.url}
             <div>
               {blog.likes}

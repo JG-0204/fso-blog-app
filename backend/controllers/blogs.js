@@ -9,7 +9,9 @@ blogsRouter.post('/', async (request, response, next) => {
 
   const user = request.user;
 
-  if (!body.title || !body.url) return response.status(400).end();
+  if (!body.title || !body.url) {
+    response.end(response.status(400));
+  }
 
   if (!body.likes) body.likes = 0;
 
